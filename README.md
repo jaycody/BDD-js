@@ -1,5 +1,5 @@
 # BDD-js
-> test automation exercises from Amodeo's [Learning BDD with JS](1)  
+> test automation exercises from Amodeo's [Learning BDD with JS][1]  
 
 ____
 
