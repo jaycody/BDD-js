@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaycody/BDD-js.git"
+    "url": "https://github.com/jaycody/bdd-js.git"
   },
   "keywords": [
     "mocha",
@@ -19,7 +19,11 @@
   "author": "jason stephens",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jaycody/BDD-js/issues"
+    "url": "https://github.com/jaycody/bdd-js/issues"
   },
-  "homepage": "https://github.com/jaycody/BDD-js"
+  "homepage": "https://github.com/jaycody/bdd-js",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
+  }
 }

@@ -22,14 +22,19 @@ sinon | Standalone test spies, stubs and mocks for js. No dependencies, works wi
 - explore best practices for organizing test codebase
 
 
-## steps
+## setup
 1. create a project folder
-2. in the project folder, run `npm init`
-  - `npm init` generates a package.json file
-  - see 'npm help json' for docs
-3. use `npm install <pkg> --save` afterward to install a package and save it as a dependency in the package.json file
-
-
+2. create a package.json file. Run  
+`npm init`  
+  - see `npm help json` for docs on package.json
+3. install Mocha and Chai locally to the project  
+`npm install mocha chai --save-dev`  
+  - this command downloads the packages and their dependencies, compiles them if necessary, stores the result in **project/node_modules**, and updates the package.json file with 'devDependencies' section.
+  - the '--save-dev' argument in the install command specifies these packages for during development only.
+  - to see how the dependencies list in the package.json works, completely remove the node_modules dir and contents, then rerun npm install.  NPM reads the package.json and restores the project's dependencies.  
+`$ rm -rf ./node_modules`  
+`$ npm install`  
+4.
 
 [1]:https://www.amazon.com/Learning-Behavior-driven-Development-JavaScript-Enrique/dp/1784392642
 [2]:https://nodejs.org/en/
