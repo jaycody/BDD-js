@@ -1,4 +1,4 @@
-# BDD-js
+# bdd-js
 > test automation exercises from Amodeo's [Learning BDD with JS][1]  
 
 ____
