@@ -1,0 +1,25 @@
+{
+  "name": "bdd-js",
+  "version": "1.0.0",
+  "description": "test automation exercises from Omodeo's book",
+  "main": "index.js",
+  "scripts": {
+    "test": "testit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaycody/BDD-js.git"
+  },
+  "keywords": [
+    "mocha",
+    "unittests",
+    "test",
+    "chai"
+  ],
+  "author": "jason stephens",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaycody/BDD-js/issues"
+  },
+  "homepage": "https://github.com/jaycody/BDD-js"
+}
