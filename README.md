@@ -12,7 +12,7 @@ Tool | Purpose | Reference
 -----|------|----------------
 node | you know, that thing it does... | [nodejs.org][2]
 npm | node package manager to install libraries, manage the dependencies, define a set of build commands | [npmjs.com][6]
-mocha | js test runner | [mocha wiki][3]
+mocha | js test runner that can be executed from Node or from the browser | [mocha wiki][3]
 chai | assertion library for mocha | [chaijs.com][4]
 sinon | Standalone test spies, stubs and mocks for js. No dependencies, works with any unit testing framework. | [sinonjs.org][5]
 
@@ -22,7 +22,7 @@ sinon | Standalone test spies, stubs and mocks for js. No dependencies, works wi
 - explore best practices for organizing test codebase
 
 
-## setup
+## steps  
 1. create a project folder
 2. create a package.json file. Run  
 `npm init`  
@@ -31,10 +31,17 @@ sinon | Standalone test spies, stubs and mocks for js. No dependencies, works wi
 `npm install mocha chai --save-dev`  
   - this command downloads the packages and their dependencies, compiles them if necessary, stores the result in **project/node_modules**, and updates the package.json file with 'devDependencies' section.
   - the '--save-dev' argument in the install command specifies these packages for during development only.
+  - use '--save' to install the packages as runtime dependencies rather than devDependencies
   - to see how the dependencies list in the package.json works, completely remove the node_modules dir and contents, then rerun npm install.  NPM reads the package.json and restores the project's dependencies.  
 `$ rm -rf ./node_modules`  
 `$ npm install`  
 4.
+
+
+### setup for new users
+1. clone repo from github
+2. run `nmp install`
+
 
 [1]:https://www.amazon.com/Learning-Behavior-driven-Development-JavaScript-Enrique/dp/1784392642
 [2]:https://nodejs.org/en/
