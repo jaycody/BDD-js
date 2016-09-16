@@ -103,6 +103,37 @@ Create a ./test/mocha.opts file to contain the default options for mocha. Option
 - or shorthand with the alias:
 `npm run`
 
+### the test cycle and its descriptive suites
+- the `describe()` function creates a new **test suite**
+- where **test suite** is defined as a grouping of test cases
+- first parameter = a description string
+- 2nd parameter = a function that contains the test cases
+- **best practice** is to use the name of the unit being tested in the description string
+```
+describe('Description string', function(){  
+      });
+```
+### the test suite and ITS test cases
+- `it()` function contains
+  - the **description** of the actual test case, which will be used in the report AND
+  - and it contains the function with the code of the test.
+- its important that the description of the test suite and the description of the test case be coherent when read together. The test reporter will concatenate these descriptions to provide a readable explanation of the test
+```
+A validator
+    1) will return error.nonpositive for not strictly positive numbers
+```
+
+### assertions and their libraries
+`assert` is a standard node package with standard set of assertions (ie `assert.equal, assert.deepEqual`)
+- assertions will throw an assertion error if the result is not expected
+
+#### assert.equal
+- uses == operator to test
+- compares simple values
+#### assert.deepEqual
+- compares contents of the array rather than simple values
+
+
 
 -----------------
 
