@@ -1,8 +1,5 @@
-var assert = require('assert');
-
-function validator() {
-  return ['error.nonpositive'];
-}
+var assert    = require('assert'),
+    validator = require('../lib/validator')
 
 describe ('A validator', function() {
   it('will return error.nonpositive for not strictly positive numbers', function (){
