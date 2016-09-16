@@ -22,7 +22,7 @@ sinon | Standalone test spies, stubs and mocks for js. No dependencies, works wi
 - explore best practices for organizing test codebase
 
 
-## steps  
+## initial setup  
 1. create a project folder
 2. create a package.json file. Run  
 `npm init`  
@@ -35,8 +35,76 @@ sinon | Standalone test spies, stubs and mocks for js. No dependencies, works wi
   - to see how the dependencies list in the package.json works, completely remove the node_modules dir and contents, then rerun npm install.  NPM reads the package.json and restores the project's dependencies.  
 `$ rm -rf ./node_modules`  
 `$ npm install`  
-4.
 
+## initial steps with Mocha
+- run mocha and watch it fail without tests to run  
+  - to execute mocha, we need to know where NPM has installed the executable of the tool. Thus  
+`./node_modules/.bin/mocha -u bdd -R spec -t 500 --recursive`  
+  - call mocha in the local node_modules directory (unless mocha is installed globally, which is non-optional).
+    - when installed globally, npm will not update the devDependencies of the local json file.  
+- specify a test command for executing tests.
+  - modify 'test' in package.json so that from then on, you need can run tests with:  
+  `npm test`
+- run `npm test`
+  - the 'npm test' command will inspect the 'scripts' section of package.json and will execute the commands specified in 'test'
+  - npm knows the tool you need is local (if the command lives in scripts/test), so it will temporarily modify PATH to include node_modules/.bin/.
+  - to modify the command, update package.json and continue to use `npm test`
+
+
+## setup /test/\*.js
+- mocha looks for and runs js scripts in /tests/
+- in root, create test dir and place test scripts inside
+```
+mkdir test
+touch test/validator-spec.js
+```
+
+## Mocha options in CLI and mocha.opts
+Create a ./test/mocha.opts file to contain the default options for mocha. Options specified in mocha.opts have less priority and will be replaced by options specified in the command line  
+
+#### specify the test interface
+`-u` or `-ui`
+- The **test interface** is the set of functions used to write tests
+- the default `-u bdd` includes `describe, it, context, beforeEach` etc
+- other test interfaces are `qunit, exports, tdd`
+
+#### specify the test report format
+`-R` or `--reporter`
+- mocha is highly configurable and allows you customize your own reports
+- many report libraries for mocha
+- `spec` (used here) is clear and detailed
+- other test report formats: `dot, min, progress, nyan`
+
+#### specify the timeout duration
+`-t` or `--timeout`
+- defines duration (in milliseconds) the time Mocha will wait for a test to finish
+- default is 2 full seconds, which is too long for all but UI and end-to-end tests.
+
+#### specify recursive folder search
+`--recursive`
+- by default, Mocha executes tests in the files that match the ./test/\*.js pattern
+- `--recursive` instructs mocha to search through the specified test folder AND its subdirectories for tests to execute.
+
+#### specify bailout on first fail
+`-b` or `--bail`
+- by default, Mocha runs ALL tests, even if some fail.
+- `--bail` says, stop all tests at first fail
+
+#### specify a watcher to launch mocha upon detected changes
+`-w` or `--watch`
+- after test runs, it remains active, watching for a change in the current working directory
+- upon change, it re-executes all tests
+- useful enough to add it to 'scripts' in package.json  
+`"watch": "mocha --ui bdd --reporter spec --timeout 500 --recursive --watch"`
+- to execute Mocha in **watch** mode:  
+`npm run-script watch`
+- run any test from 'scripts' using  
+`npm run-script <script name>`
+- or shorthand with the alias:
+`npm run`
+
+
+-----------------
 
 ### setup for new users
 1. clone repo from github
