@@ -4,7 +4,8 @@
   "description": "test automation exercises from Omodeo's book",
   "main": "index.js",
   "scripts": {
-    "test": "testit"
+    "test": "mocha -u bdd -R spec -t 500 --recursive",
+    "watch": "mocha --ui bdd --reporter spec --timeout 500 --recursive --watch"
   },
   "repository": {
     "type": "git",
