@@ -134,7 +134,56 @@ A validator
 #### assert.deepEqual
 - compares contents of the array rather than simple values
 
+## Hello to Chai and its DSL
+4 out of 5 devs surveyed approve of this assertion library
 
+### Chai's Domain Specific Language  
+Chains, Assertions, Flags  
+>`expect(5).to.be.deep.equal(5)`
+
+#### Chains
+Chains are DSL particles that help express an assertion. They do not change the assertion's behavior.  
+>`to, be, been, is, that, and, has, have, with, at, of, same`  
+
+ex -> `expect('jaylab').to.be.a('string')`
+
+#### Assertions  
+Assertions are DSL particles that perform the check of the result.   
+Assertions are normally functions that take 1 or more parameters with expected result
+> `equal` asserts === equality of type and value  
+`below` asserts the given is less than the expected  
+`exist` asserts something is present
+
+ex -> `expect(10).to.be.below(1000)`
+
+#### Flags  
+Flags modify an assertion's behavior
+> `deep` modifies `equal` to check the contents of the result  
+`not` inverts an assertion    
+
+ex -> `expect(undefined).not.to.exist`
+
+#### Assertion or Flag?  
+Some particles have dual duties  
+> `include, contain, length`  
+
+`include` as flag to modify the `keys` assertion:
+> `expect({ name: 'Jason', age: 45 }).to.include.keys('age');`  
+
+
+`length` as assertion:
+> `expect([1, 2, 3]).to.have.length(3);`
+
+`length` as flag:  
+> `expect([1, 2, 3]).to.have.length.of.at.least(2);`
+
+#### Merge Assertions  
+From this:
+> `expect(anArray).to.have.length(2);`  
+`expect(anArray).to.contain('element');`
+
+To this:  
+> `expect(anArray).to.have.length(2).and.to.contain('element');`
 
 -----------------
 
