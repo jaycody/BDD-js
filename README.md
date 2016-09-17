@@ -130,6 +130,7 @@ A validator
 #### assert.equal
 - uses == operator to test
 - compares simple values
+
 #### assert.deepEqual
 - compares contents of the array rather than simple values
 
