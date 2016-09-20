@@ -187,6 +187,97 @@ To this:
 
 -----------------
 
+## BDD Test Guidelines (describe/it)  
+[from this great post on yeoman.io][7]  
+#### EACH Test must start with a clean slate
+* `beforeEach` instead of `before`  
+* reinstantiate objects before running each `it` block  
+* create every file requred by a test in a `beforeEach`
+* reset any side effects done in test environment after each test
+
+#### EACH test must be runnable in isolation  
+* Each test must pass if they're run alone. To run a single test:  
+`mocha test.js --grep 'test name'`
+
+#### Stub most performanc heavy operations  
+* when possible, stub networkds or other long operations
+* use sinon.js for most stubbing needs
+
+#### Naming Conventions
+* `describe` blocks should cover three types of info:
+     * Object to be tested
+     * method/property
+     * circumstantial group (ie 'when this')
+* `it` blocks cover assertions
+     * they should use as few lines of code as possible
+     * there should be as many `it` blocks as there are assertions on a method
+* Instance methods and properties should be prefixed by a bang sing  
+eg `#find()`
+
+* Static methods and properties should be prefixed by a dot  
+eg `.exclude()`
+```
+// Given this object
+function Class() {
+  this.args = nopt();
+};
+Class.exclude = function () {};
+Class.name = 'Yeoman';
+Class.prototype.find = function () {};
+
+// We'd have this test structure
+describe('Class', function () {
+  describe('.exclude()', function () {});
+  describe('.name', function () {});
+  describe('#find()', function () {});
+  describe('#args', function () {});
+});
+```
+* methods should end using paranthesis, but should not include expected parameters
+     * parameters should be covered in documentation comments
+* `it` blocks should be declaritive
+```
+// BAD
+it ('should find generators');
+
+// GOOD
+it ('find generators');
+```
+
+#### Assertions
+* Don't add `message` to asserions unless the error thrown makes it unclear what failed
+* if you must add a messsage, describe expected outcome and why it failed. Remember, these messages are the error message thrown with the failure.  Let those be useful in these occasions.  For example
+```
+// BAD
+assert(Generator.appname, 'Generator has an 'appname' property');
+
+// GOOD
+assert(Generator.appname, 'Expected Generator to have an 'appname' property');
+```
+
+#### Stylistic Pref
+##### `.bind() throwing assertions
+* when testing that a method throws with invalid parameters, bind the parameters rather than create an anonymous function
+```
+// BAD 
+assert.throws(function() {
+     class.method('Invalid param');
+});
+
+// GOOD
+assert.throws(class.method.bind(class, 'Invalid param'));
+```
+
+
+
+
+
+
+
+
+
+_______________
+
 ### setup for new users
 1. clone repo from github
 2. run `nmp install`
@@ -198,3 +289,4 @@ To this:
 [4]:http://chaijs.com/
 [5]:http://sinonjs.org/
 [6]:https://www.npmjs.com/
+[7]:http://yeoman.io/contributing/testing-guidelines.html
