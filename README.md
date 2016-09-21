@@ -1,12 +1,11 @@
 # bdd-js
-> test automation exercises from Amodeo's [Learning BDD with JS][1]  
+> test automation exercises from  
+* Amodeo's [Learning BDD with JS][1]  
+* Argelius's [Mocha + Chai.js unit testing for ES6 with Istanbul code coverage][8]
 
 ____
 
-## highlights
-- test command for this project set via npm: `testit`
-
-## automated tests using
+## automated tests tools
 
 Tool | Purpose | Reference
 -----|------|----------------
@@ -185,6 +184,23 @@ From this:
 To this:  
 > `expect(anArray).to.have.length(2).and.to.contain('element');`
 
+## Describe / Context / It
+#### Describe - (the feature)
+Use `describe` to defines features and actions.  
+Use the feature-under-test as the **title** of the describe function.  
+
+#### Conext - (of execution path)
+Use `context` to define each scenario  
+Use one `context` function for each **scenario** of a feature.  
+* A **scenario** defines a different execution path of the same feature.
+* **Scenarios** describe what happens with different inputs   
+* Since one feature defines only one operation on the system, different **scenarios** can vary only in their setup or in the inputs of the operation.  
+
+#### It - (specific input)  
+Use `it` for assertions or tests with specific inputs
+
+
+
 -----------------
 
 ## BDD Test Guidelines (describe/it)  
@@ -215,7 +231,8 @@ To this:
 eg `#find()`
 
 * Static methods and properties should be prefixed by a dot  
-eg `.exclude()`
+eg `.exclude()`  
+
 ```
 // Given this object
 function Class() {
@@ -236,6 +253,7 @@ describe('Class', function () {
 * methods should end using paranthesis, but should not include expected parameters
      * parameters should be covered in documentation comments
 * `it` blocks should be declaritive
+
 ```
 // BAD
 it ('should find generators');
@@ -247,6 +265,7 @@ it ('find generators');
 #### Assertions
 * Don't add `message` to asserions unless the error thrown makes it unclear what failed
 * if you must add a messsage, describe expected outcome and why it failed. Remember, these messages are the error message thrown with the failure.  Let those be useful in these occasions.  For example
+
 ```
 // BAD
 assert(Generator.appname, 'Generator has an 'appname' property');
@@ -256,10 +275,11 @@ assert(Generator.appname, 'Expected Generator to have an 'appname' property');
 ```
 
 #### Stylistic Pref
-##### `.bind() throwing assertions
+##### `.bind()` throwing assertions
 * when testing that a method throws with invalid parameters, bind the parameters rather than create an anonymous function
+
 ```
-// BAD 
+// BAD
 assert.throws(function() {
      class.method('Invalid param');
 });
@@ -278,10 +298,17 @@ assert.throws(class.method.bind(class, 'Invalid param'));
 
 _______________
 
+
 ### setup for new users
 1. clone repo from github
 2. run `nmp install`
 
+------------------
+
+## Ref and Tutorials
+* [Mocha + Chai.js unit testing for ES6 with Istanbul code coverage][8]
+* [ANDREAS ARGELIUS's tutorials code on github][10]
+* [Unit Test Your JavaScript Using Mocha and Chai][9]
 
 [1]:https://www.amazon.com/Learning-Behavior-driven-Development-JavaScript-Enrique/dp/1784392642
 [2]:https://nodejs.org/en/
@@ -290,3 +317,6 @@ _______________
 [5]:http://sinonjs.org/
 [6]:https://www.npmjs.com/
 [7]:http://yeoman.io/contributing/testing-guidelines.html
+[8]:http://onsen.io.s3-website-us-east-1.amazonaws.com/blog/mocha-chaijs-unit-test-coverage-es6/
+[9]:https://www.sitepoint.com/unit-test-javascript-mocha-chai/
+[10]:https://github.com/argelius/chai-es6-sample
