@@ -5,6 +5,26 @@
 
 ____
 
+## git quickref
+####From dev branch:
+..switch to master and update my local master
+```
+git checkout master
+git pull
+```
+
+..merge master into my local dev brach, then update remote dev branch
+```
+git fetch  # gathers all changes from all branches
+git merge origin/master # merge master into my local dev branch
+git push        # push changes to my remote devBranch
+```
+
+Combine git add, rm, and commit
+`git commit -a -m "commit message"`
+
+
+
 ## automated tests tools
 
 Tool | Purpose | Reference
