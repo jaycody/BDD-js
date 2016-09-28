@@ -20,7 +20,7 @@ git merge origin/master # merge master into my local dev branch
 git push        # push changes to my remote devBranch
 ```
 
-Combine git add, rm, and commit
+Combine git add, rm, and commit  
 `git commit -a -m "commit message"`
 
 
