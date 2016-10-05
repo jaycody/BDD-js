@@ -5,25 +5,18 @@
 
 ____
 
-## git quickref
-####From dev branch:
-..switch to master and update my local master
-```
-git checkout master
-git pull
-```
+## dependencies
+mocha  
+chai  
 
-..merge master into my local dev brach, then update remote dev branch
-```
-git fetch  # gathers all changes from all branches
-git merge origin/master # merge master into my local dev branch
-git push        # push changes to my remote devBranch
-```
+#### istanbul  
+CLI
+`./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha`
+or  
+`npm run coverage`  
 
-Combine git add, rm, and commit  
-`git commit -a -m "commit message"`
-
-
+package.json  
+`"coverage": "istanbul cover _mocha"`
 
 ## automated tests tools
 
@@ -33,7 +26,8 @@ node | you know, that thing it does... | [nodejs.org][2]
 npm | node package manager to install libraries, manage the dependencies, define a set of build commands | [npmjs.com][6]
 mocha | js test runner that can be executed from Node or from the browser | [mocha wiki][3]
 chai | assertion library for mocha | [chaijs.com][4]
-sinon | Standalone test spies, stubs and mocks for js. No dependencies, works with any unit testing framework. | [sinonjs.org][5]
+sinon | Standalone test spies, stubs and mocks for js. No dependencies, works with any unit testing framework. | [sinonjs.org][5]  
+istanbul | test coverage tool | $ npm install --save-dev istanbul
 
 ## objectives
 - write expressive assertions with chai
@@ -235,8 +229,8 @@ Use `it` for assertions or tests with specific inputs
 * Each test must pass if they're run alone. To run a single test:  
 `mocha test.js --grep 'test name'`
 
-#### Stub most performanc heavy operations  
-* when possible, stub networkds or other long operations
+#### Stub most performance heavy operations  
+* when possible, stub networks or other long operations
 * use sinon.js for most stubbing needs
 
 #### Naming Conventions
@@ -318,6 +312,29 @@ assert.throws(class.method.bind(class, 'Invalid param'));
 
 _______________
 
+
+
+## git quickref
+####From dev branch:
+..switch to master and update my local master
+```
+git checkout master
+git pull
+```
+
+..merge master into my local dev brach, then update remote dev branch
+```
+git fetch  # gathers all changes from all branches
+git merge origin/master # merge master into my local dev branch
+git push        # push changes to my remote devBranch
+```
+
+Combine git add, rm, and commit  
+`git commit -a -m "commit message"`
+
+
+
+----------------
 
 ### setup for new users
 1. clone repo from github
